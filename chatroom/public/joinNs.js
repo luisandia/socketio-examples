@@ -3,7 +3,7 @@ function joinNs(endpoint) {
         // check to see if nsSocket is actually a socket
         nsSocket.close();
         // remove the eventListener before it's added again
-        document.querySelector('#user-input').removeEventListener('submit', formSubmission)
+        // document.querySelector('#user-input').removeEventListener('submit', formSubmission)
     }
     nsSocket = io(`http://localhost:9000${endpoint}`)
     nsSocket.on('nsRoomLoad', (nsRooms) => {
@@ -38,8 +38,10 @@ function joinNs(endpoint) {
         console.log(msg)
         const newMsg = buildHTML(msg);
         document.querySelector('#messages').innerHTML += newMsg
+        const messagesUl = document.querySelector('#messages');
+        messagesUl.scrollTo(0,messagesUl.scrollHeight);
     })
-    document.querySelector('.message-form').addEventListener('submit', formSubmission)
+    document.querySelector('#user-input').addEventListener('submit', formSubmission)
 }
 
 function formSubmission(event) {

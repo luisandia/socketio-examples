@@ -70,6 +70,7 @@ namespaces.forEach((namespace)=>{
             // this is because the socket ALWAYS joins its own room on connection
             // get the keys
             const roomTitle = Object.keys(nsSocket.rooms)[1];
+            console.log(nsSocket.rooms)
             // we need to find the Room object for this room
             const nsRoom = namespace.rooms.find((room)=>{
                 return room.roomTitle === roomTitle;
